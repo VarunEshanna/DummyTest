@@ -1,11 +1,7 @@
 ﻿using LegalService;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using TestFramework;
 using TestFrameworkLib.beans;
 
@@ -14,7 +10,7 @@ namespace LegalServiceTest
     [TestFixture]
     class AdobeCorporateServiceTest3
     {
-        [Test, TestCaseSource(typeof(MyDataClass), "AutoAutoAssertion1", new object[] { "Adobe Corporate Entity Records,Adobe Contract Class Records" }), CustomAttr]
+        [Test, TestCaseSource(typeof(MyDataClass), "AutoAutoAssertion", new object[] { "Adobe Corporate Entity Records,Adobe Contract Class Records" }), CustomAttr]
         public Object ServiceTest(ClassDetails classDetails, Object request)
         {
             Assembly mainAssembly = typeof(AgreementInitiationService).Assembly;

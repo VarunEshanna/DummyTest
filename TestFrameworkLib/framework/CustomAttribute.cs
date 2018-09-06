@@ -5,6 +5,7 @@ using NUnit.Framework.Interfaces;
 using NUnit.Framework.Internal;
 using NUnit.Framework.Internal.Commands;
 using TestFrameworkLib;
+using TestFrameworkLib.utility;
 
 namespace TestFramework
 {
@@ -69,8 +70,12 @@ namespace TestFramework
                 // Compare and build a custom error message
             }
 
-            MongoDbConnection mongoDbConnection = new MongoDbConnection();
-            mongoDbConnection.upsertTestResultsData(testMethodDataEntity);
+            if (!TestConstants.DATABASE_INSTANCE.Equals("NONE"))
+            {
+                MongoDbConnection mongoDbConnection = new MongoDbConnection();
+                mongoDbConnection.UpsertTestResultsData(testMethodDataEntity);
+            }
+            
 
             return testResults;
         }

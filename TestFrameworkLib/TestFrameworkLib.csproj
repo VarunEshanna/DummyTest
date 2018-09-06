@@ -86,10 +86,12 @@
     <Compile Include="beans\DataSet.cs" />
     <Compile Include="database\MongoDbConnection.cs" />
     <Compile Include="beans\MongoEntityObject.cs" />
+    <Compile Include="framework\DatabaseInstanceFactory.cs" />
     <Compile Include="framework\MyDataClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="beans\TestMethodDataEntity.cs" />
     <Compile Include="templates\dynamics\plugin\PluginTemplates.cs" />
+    <Compile Include="utility\TestConstants.cs" />
     <Compile Include="utility\TestSettings.cs" />
     <Compile Include="utility\TestUtility.cs" />
   </ItemGroup>

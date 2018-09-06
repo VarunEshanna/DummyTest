@@ -1,20 +1,15 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson.Serialization.IdGenerators;
 using System;
 using System.Collections.Generic;
 
 namespace TestFrameworkLib.beans
 {
-    //[BsonNoId]
+
     public class ClassDetails
     {
-        ////[BsonRepresentation(BsonType.ObjectId)]
-        ////public String _id { get; set; }
-
         [BsonId]
         public ObjectId _id { get; set; }
-
         [BsonElement("DataSet")]
         public String DataSet{ get; set; }
         [BsonElement("ClassName")]
@@ -22,7 +17,7 @@ namespace TestFrameworkLib.beans
         [BsonElement("MethodName")]
         public String MethodName { get; set; }
         [BsonElement("RequestTypes")]
-        public List<String> entityResponeData { get; set; }
+        public List<String> RequestTypeList { get; set; }
         [BsonElement("ResponseType")]
         public String ResponseType { get; set; }
     }

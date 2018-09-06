@@ -6,11 +6,11 @@ using MongoDB.Driver.Builders;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Configuration;
 using TestFramework;
 using System.Collections;
 using TestFrameworkLib.beans;
-using System.Security.Authentication;
+using TestFrameworkLib.utility;
+using TestFrameworkLib.framework;
 
 namespace TestFrameworkLib
 {
@@ -20,30 +20,10 @@ namespace TestFrameworkLib
 
         public MongoDbConnection()
         {
-            database = getMongoDBConnection();
+            database = DatabaseInstanceFactory.getMongoDBConnection(TestConstants.DATABASE_INSTANCE);
         }
-
-        private MongoDatabase getMongoDBConnection()
-        {
-            //String connectionString = @"mongodb://adobetestframework:wquhDXAF0zYe6uTUHSRBY560DdVAO2z3clvewixkT0ccwnOoCzVQfm2k3mEbEfhnTnlWvVbiOGV8WgJObg3kDw==@adobetestframework.documents.azure.com:10255/testframework?ssl=true&replicaSet=globaldb";
-            //MongoClientSettings settings = MongoClientSettings.FromUrl(
-            //  new MongoUrl(connectionString)
-            //);
-            //settings.SslSettings =new SslSettings() { EnabledSslProtocols = SslProtocols.Tls12 };
-            //var mongoClient = new MongoClient(settings);
-            //var server = mongoClient.GetServer();
-            //var database = server.GetDatabase("testframework");
-            //return database;
-            String connectionString = ConfigurationManager.AppSettings["connectionString"];
-            String databaseName = ConfigurationManager.AppSettings["database"];
-
-            var client = new MongoClient("mongodb://SLTESTFW:pA_r3MP1023@sapote-b:27021/SLTESTFW?connect=replicaSet");
-            var server = client.GetServer();
-            var database = server.GetDatabase("SLTESTFW");
-            return database;
-        }
-
-        public Dictionary<String, Object> getRequestData(String dataSetName, String type)
+        
+        public Dictionary<String, Object> GetRequestData(String dataSetName, String type)
         {
             var query = Query<DataSet>.EQ(ds => ds.Name, dataSetName);
             var dataSetObject = database.GetCollection<DataSet>("Dataset").FindOne(query);
@@ -107,7 +87,7 @@ namespace TestFrameworkLib
             return names;
         }
 
-        public void upsertTestResultsData(TestMethodDataEntity testMethodDataEntity)
+        public void UpsertTestResultsData(TestMethodDataEntity testMethodDataEntity)
         {
             var collection = database.GetCollection<TestMethodDataEntity>("TestMethodDataEntity");
             var query = Query.And(
@@ -135,8 +115,6 @@ namespace TestFrameworkLib
             {
                 // throw error
             }
-
-
         }
 
         public ClassDetails getClassDetails(String DataSetName)
@@ -161,31 +139,5 @@ namespace TestFrameworkLib
             }
             return array;
         }
-
-        public void insertData()
-        {
-            DataSet dataSet = new DataSet();
-            dataSet.Name = "New Name";
-            Dictionary<String, String> myDictionary1 = new Dictionary<String, String>();
-            myDictionary1.Add("Account", "asdasdacecace");
-            myDictionary1.Add("Contact", "asdasdawdawdadaacecace");
-            myDictionary1.Add("Oppty", "asdaawawdawd");
-
-            Dictionary<String, String> myDictionary2 = new Dictionary<String, String>();
-            myDictionary2.Add("Account", "asdasdacecace");
-            myDictionary2.Add("Contact", "asdasdawdawdadaacecace");
-            myDictionary2.Add("Oppty", "asdaawawdawd");
-
-            List<Dictionary<String, String>> newList = new List<Dictionary<String, String>>();
-            newList.Add(myDictionary1);
-            newList.Add(myDictionary2);
-            //dataSet.entityRequestData = newList;
-            var collection = database.GetCollection<DataSet>("Dataset");
-
-            collection.Insert(dataSet);
-            var id = dataSet._id;
-        }
     }
-
-
 }
