@@ -8,6 +8,7 @@ namespace TestFrameworkLib.utility
 {
     public class TestConstants
     {
-        public static String DATABASE_INSTANCE = "NONE";
+        // ADOBE or AZURE or NONE
+        public static String DATABASE_INSTANCE = "ADOBE";
     }
 }
