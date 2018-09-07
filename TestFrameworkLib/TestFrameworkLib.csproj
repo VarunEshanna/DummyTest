@@ -92,8 +92,6 @@
     <Compile Include="beans\TestMethodDataEntity.cs" />
     <Compile Include="templates\dynamics\plugin\PluginTemplates.cs" />
     <Compile Include="utility\TestConstants.cs" />
-    <Compile Include="utility\TestSettings.cs" />
-    <Compile Include="utility\TestUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
