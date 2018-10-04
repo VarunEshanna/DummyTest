@@ -118,7 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="services\AdobeCorporateServiceTest3.cs" />
+    <Compile Include="services\AdobeServiceTestClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">
@@ -130,10 +130,6 @@
     <ProjectReference Include="..\AdobeCorporateService\LegalService.csproj">
       <Project>{bfa5bc11-f110-4769-9c80-e4a56145c3e6}</Project>
       <Name>LegalService</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LegalServicePlugin\LegalServicePlugin.csproj">
-      <Project>{4c69ed6e-99f3-40b5-b9d1-3feb3f6a195d}</Project>
-      <Name>LegalServicePlugin</Name>
     </ProjectReference>
     <ProjectReference Include="..\TestFrameworkLib\TestFrameworkLib.csproj">
       <Project>{43f0a601-3180-4f38-b296-0f101769c867}</Project>

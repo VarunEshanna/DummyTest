@@ -87,22 +87,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="beans\ContactEntity.cs" />
-    <Compile Include="beans\AccountEntity.cs" />
     <Compile Include="beans\GetAdobeCorporateEntityResponse.cs" />
     <Compile Include="beans\GetAgreementNameRequest.cs" />
     <Compile Include="beans\GetAgreementNameResponse.cs" />
-    <Compile Include="callouthandler\CalloutHandler.cs" />
-    <Compile Include="callouthandler\CalloutRequest.cs" />
-    <Compile Include="callouthandler\CalloutResponse.cs" />
-    <Compile Include="service\AdobeCorporateServiceEntity.cs" />
-    <Compile Include="service\AdobeCorporateService.cs" />
+    <Compile Include="service\AgreementHandler.cs" />
     <Compile Include="beans\GetAdobeCorporateEntityRequest.cs" />
     <Compile Include="beans\GetAgreementContractClassRequest.cs" />
     <Compile Include="beans\GetAgreementContractClassResponse.cs" />
     <Compile Include="beans\GetEmailValuesOnAgreementRequest.cs" />
     <Compile Include="beans\GetEmailValuesOnAgreementResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="service\CustomSettings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

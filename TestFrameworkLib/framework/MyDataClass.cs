@@ -12,13 +12,18 @@ namespace TestFramework
 
     public class MyDataClass
     {
-        public static IEnumerable AutoAutoAssertion(String MultipleDataSetName)
+        public static IEnumerable AutoAutoAssertion()
         {
+            //String MultipleDataSetName = "Adobe Corporate Entity Records,Adobe Contract Class Records";
+            String MultipleDataSetName = TestContext.Parameters["datasets"];
+            if(MultipleDataSetName != null)
+            {
+                MultipleDataSetName = MultipleDataSetName.Replace('_', ' ');
+            }
             String[] DataSetNames = MultipleDataSetName.Split(',');
             for(int j=0; j < DataSetNames.Length; j++)
             {
                 String DataSetName = DataSetNames[j];
-
                 ClassDetails classDetails = null;
                 Dictionary<String, Object> reqNames = null;
                 Dictionary<String, Object> respNames = null;

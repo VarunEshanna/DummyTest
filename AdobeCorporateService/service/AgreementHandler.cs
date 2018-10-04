@@ -2,52 +2,53 @@
 using System.Collections.Generic;
 using System.Linq;
 using AdobeCorporateService.beans;
-using Microsoft.Xrm.Sdk;
 
 namespace LegalService
 {
-    public class AgreementInitiationServiceEntity
+    public class AgreementInitiationService
     {
-        public void GetAdobeCorporateEntity(AccountEntity entity)
+        public GetAdobeCorporateEntityResponse GetAdobeCorporateEntity (GetAdobeCorporateEntityRequest GetAdobeCorporateEntityRequest)
         {
-            String[] accountCountryList = { "US", "CA", "MX", "JP" };
-            if (Boolean.Parse(entity.isCorporateEntityOverride))
+            GetAdobeCorporateEntityResponse GetAdobeCorporateEntityResponse = new GetAdobeCorporateEntityResponse();
+
+            String[] accountCountryList = { "US", "CA" ,"MX", "JP" };
+            if (GetAdobeCorporateEntityRequest.isCorporateEntityOverride)
             {
-                if (entity.MarketSegment.Equals("Commercial"))
-                {
-                    if (accountCountryList.Any(item => entity.AccountCountry.Contains(item)) ||
-                        entity.AgreementType.Equals("Network Access"))
+                if (GetAdobeCorporateEntityRequest.MarketSegment.Equals("Commercial")){
+                    if (accountCountryList.Any(item => GetAdobeCorporateEntityRequest.AccountCountry.Contains(item)) || 
+                        GetAdobeCorporateEntityRequest.AgreementType.Equals("NDA"))
                     {
-                        entity.AdobeCorporateEntity = "ADUS";
+                        GetAdobeCorporateEntityResponse.AdobeCorporateEntity = "ADUS";
                     }
                     else
                     {
-                        entity.AdobeCorporateEntity = "ADIR";
+                        GetAdobeCorporateEntityResponse.AdobeCorporateEntity = "ADIR";
                     }
                 }
                 else
                 {
-                    entity.AdobeCorporateEntity = "3PTY";
+                    GetAdobeCorporateEntityResponse.AdobeCorporateEntity = "ADIR";
                 }
             }
+            else
+            {
+                GetAdobeCorporateEntityResponse.AdobeCorporateEntity = "3PTY";
+            }
+            return GetAdobeCorporateEntityResponse;
         }
 
-        public void GetAdobeCorporateEntity(object entity)
+        public GetAgreementContractClassResponse GetAgreementContractClass(GetAgreementContractClassRequest GetAgreementContractClassRequest)
         {
-            throw new NotImplementedException();
-        }
-
-        public void GetAgreementContractClass(AccountEntity entity)
-        {
+            GetAgreementContractClassResponse GetAgreementContractClassResponse = new GetAgreementContractClassResponse();
             String value = null;
 
             Dictionary<String, String> typeClassMap = new Dictionary<String, String>();
             typeClassMap.Add("NDA","NRG");
             typeClassMap.Add("DMA", "RG");
 
-
-            typeClassMap.TryGetValue(entity.AgreementType, out value);
-            entity.ContractClass = value;
+            typeClassMap.TryGetValue(GetAgreementContractClassRequest.AgreementType, out value);
+            GetAgreementContractClassResponse.ContractClass = value;
+            return GetAgreementContractClassResponse;
         }
 
         // -----------------------------------------------------------------------------------------------------------------------------
@@ -171,17 +172,6 @@ namespace LegalService
             }
 
             return GetEmailValuesOnAgreementResponse;
-        }
-
-
-        public void PopulateDealDeskCase()
-        {
-
-        }
-
-        public String GetAdobeCorporateEntity(AccountEntity entity, ContactEntity contact)
-        {
-            return "test";
         }
 
     }

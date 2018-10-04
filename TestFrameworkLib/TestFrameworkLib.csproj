@@ -102,10 +102,6 @@
       <Project>{bfa5bc11-f110-4769-9c80-e4a56145c3e6}</Project>
       <Name>LegalService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LegalServicePlugin\LegalServicePlugin.csproj">
-      <Project>{4c69ed6e-99f3-40b5-b9d1-3feb3f6a195d}</Project>
-      <Name>LegalServicePlugin</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="templates\dynamics\ui\" />

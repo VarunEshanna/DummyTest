@@ -8,9 +8,9 @@ using TestFrameworkLib.beans;
 namespace LegalServiceTest
 {
     [TestFixture]
-    class AdobeCorporateServiceTest3
+    public class AdobeServiceTestClass
     {
-        [Test, TestCaseSource(typeof(MyDataClass), "AutoAutoAssertion", new object[] { "Adobe Corporate Entity Records,Adobe Contract Class Records" }), CustomAttr]
+        [Test, TestCaseSource(typeof(MyDataClass), "AutoAutoAssertion"), CustomAttr]
         public Object ServiceTest(ClassDetails classDetails, Object request)
         {
             Assembly mainAssembly = typeof(AgreementInitiationService).Assembly;
