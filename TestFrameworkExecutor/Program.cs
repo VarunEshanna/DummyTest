@@ -23,6 +23,7 @@ namespace TestFrameworkExecutor
             string filename = Path.Combine(path, "nunit3-console.exe");
             var proc = System.Diagnostics.Process.Start(filename, parameters);
 
+            // Display results in the UI
 
         }
     }
